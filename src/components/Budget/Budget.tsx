@@ -1,7 +1,25 @@
+import { useState, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
+
 const Budget = () => {
+
+  const  {budget, setBudget} = useContext(AppContext); 
+
+  const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBudget(Number(e.target.value)); 
+  };
+
   return (
     <div className="alert alert-secondary p-3 d-flex align-items-center justify-content-between">
-      <div>Budget: $1000</div>
+      <input
+        required
+        type="text"
+        className="form-control"
+        id="budget"
+        value={budget}
+        onChange={handleBudgetChange}    
+      ></input>
+
     </div>
   );
 };
